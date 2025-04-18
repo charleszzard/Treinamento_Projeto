@@ -1,0 +1,16 @@
+[
+    {"temperatura": 25.4, "umidade": 60, "co2": 400, "alerta": 0},
+    {"temperatura": 30, "umidade": 50, "co2": 1200, "alerta": 1},
+    {"temperatura": 40, "umidade": 60, "co2": 400, "alerta": 0},
+    {"temperatura": 35, "umidade": 60, "co2": 400, "alerta": 0},
+    {"temperatura": 52, "umidade": 60, "co2": 1200, "alerta": 1},
+    {"temperatura": 47, "umidade": 60, "co2": 400, "alerta": 0},
+    {"temperatura": 80, "umidade": 60, "co2": 4000, "alerta": 1},
+    {"temperatura": 25.4, "umidade": 60, "co2": 400, "alerta": 0},
+    {"temperatura": 31.2, "umidade": 50, "co2": 1200, "alerta": 1},
+    {"temperatura": 28.7, "umidade": 55, "co2": 650, "alerta": 0},
+    {"temperatura": 30.5, "umidade": 52, "co2": 1100, "alerta": 1}
+      
+      
+  ]
+  
