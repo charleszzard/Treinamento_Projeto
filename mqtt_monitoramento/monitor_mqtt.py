@@ -7,40 +7,58 @@ import joblib
 import os
 
 # === CONFIGURAÇÕES DO BROKER MQTT ===
-BROKER = "0.0.0.0"  # Mude para o IP do seu broker se necessário
+BROKER = "localhost"  # Altere se for remoto
 PORT = 1883
-TOPICO = "CO / QUAL_AR"  # Substitua se o tópico for diferente
+TOPICOS = [("co", 0), ("qual_ar", 0), ("temp", 0)]  # Substitua ou adicione outros se necessário
 
-# === CARREGAR MODELO E SCALER ===
+# === CAMINHOS PARA O MODELO E O SCALER ===
 caminho_modelo = os.path.join("..", "treinamento", "modelo_sensor.h5")
 caminho_scaler = os.path.join("..", "treinamento", "scaler.save")
 modelo = load_model(caminho_modelo)
 scaler: StandardScaler = joblib.load(caminho_scaler)
 
-# === CALLBACKS DO MQTT ===
+# === BUFFER PARA VALORES DOS SENSORES ===
+valores_recebidos = {
+    "co": None,
+    "qual_ar": None,
+    "temp": None
+}
+
+def tentar_prever():
+    if None not in valores_recebidos.values():
+        entrada = np.array([[valores_recebidos["temp"], valores_recebidos["qual_ar"], valores_recebidos["co"]]])
+        entrada_normalizada = scaler.transform(entrada)
+        resultado = modelo.predict(entrada_normalizada)
+        status = "⚠️ ALERTA" if resultado[0][0] >= 0.5 else "✅ Normal"
+        print("🧠 Previsão:", status)
+    else:
+        print("⏳ Aguardando dados completos...")
+
+# === CALLBACKS MQTT ===
 def on_connect(client, userdata, flags, rc):
     print("✅ Conectado ao broker! Código:", rc)
-    client.subscribe(TOPICO)
+    client.subscribe(TOPICOS)
 
 def on_message(client, userdata, msg):
     try:
         payload = msg.payload.decode("utf-8")
         dados = json.loads(payload)
-        print("📡 Dados recebidos:", dados)
 
-        entrada = np.array([[dados["temperatura"], dados["umidade"], dados["co2"]]])
-        entrada_normalizada = scaler.transform(entrada)
+        # Esperado: {"data": "...", "id": ..., "topico": "co", "valor": "435"}
+        topico = dados.get("topico")
+        valor = float(dados.get("valor", 0))
 
-        resultado = modelo.predict(entrada_normalizada)
-        status = "⚠️ ALERTA" if resultado[0][0] >= 0.5 else "✅ Normal"
-        print("🧠 Previsão:", status)
+        if topico in valores_recebidos:
+            valores_recebidos[topico] = valor
+            print(f"📡 {topico.upper()}: {valor}")
+            tentar_prever()
 
     except Exception as e:
         print("❌ Erro ao processar mensagem:", e)
 
-# === CONECTA AO BROKER E INICIA LOOP ===
+# === CONECTA AO BROKER ===
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect(BROKER, PORT, 6000)
+client.connect(BROKER, PORT, 60)
 client.loop_forever()
