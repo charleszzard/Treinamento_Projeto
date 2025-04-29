@@ -1,16 +1,41 @@
 [
-    {"temperatura": 25.4, "umidade": 60, "co2": 400, "alerta": 0},
-    {"temperatura": 30, "umidade": 50, "co2": 1200, "alerta": 1},
-    {"temperatura": 40, "umidade": 60, "co2": 400, "alerta": 0},
-    {"temperatura": 35, "umidade": 60, "co2": 400, "alerta": 0},
-    {"temperatura": 52, "umidade": 60, "co2": 1200, "alerta": 1},
-    {"temperatura": 47, "umidade": 60, "co2": 400, "alerta": 0},
-    {"temperatura": 80, "umidade": 60, "co2": 4000, "alerta": 1},
-    {"temperatura": 25.4, "umidade": 60, "co2": 400, "alerta": 0},
-    {"temperatura": 31.2, "umidade": 50, "co2": 1200, "alerta": 1},
-    {"temperatura": 28.7, "umidade": 55, "co2": 650, "alerta": 0},
-    {"temperatura": 30.5, "umidade": 52, "co2": 1100, "alerta": 1}
-      
-      
-  ]
-  
+  {"data": "2025-04-25 12:00:01", "id": 1, "topico": "co", "valor": "35"},
+  {"data": "2025-04-25 12:00:02", "id": 1, "topico": "qual_ar", "valor": "55"},
+  {"data": "2025-04-25 12:00:03", "id": 1, "topico": "temp", "valor": "28"},
+
+  {"data": "2025-04-25 12:01:01", "id": 2, "topico": "co", "valor": "65"},
+  {"data": "2025-04-25 12:01:02", "id": 2, "topico": "qual_ar", "valor": "45"},
+  {"data": "2025-04-25 12:01:03", "id": 2, "topico": "temp", "valor": "36"},
+
+  {"data": "2025-04-25 12:02:01", "id": 3, "topico": "co", "valor": "20"},
+  {"data": "2025-04-25 12:02:02", "id": 3, "topico": "qual_ar", "valor": "75"},
+  {"data": "2025-04-25 12:02:03", "id": 3, "topico": "temp", "valor": "25"},
+
+  {"data": "2025-04-25 12:03:01", "id": 4, "topico": "co", "valor": "85"},
+  {"data": "2025-04-25 12:03:02", "id": 4, "topico": "qual_ar", "valor": "25"},
+  {"data": "2025-04-25 12:03:03", "id": 4, "topico": "temp", "valor": "38"},
+
+  {"data": "2025-04-25 12:04:01", "id": 5, "topico": "co", "valor": "15"},
+  {"data": "2025-04-25 12:04:02", "id": 5, "topico": "qual_ar", "valor": "35"},
+  {"data": "2025-04-25 12:04:03", "id": 5, "topico": "temp", "valor": "26"},
+
+  {"data": "2025-04-25 12:05:01", "id": 6, "topico": "co", "valor": "50"},
+  {"data": "2025-04-25 12:05:02", "id": 6, "topico": "qual_ar", "valor": "65"},
+  {"data": "2025-04-25 12:05:03", "id": 6, "topico": "temp", "valor": "29"},
+
+  {"data": "2025-04-25 12:06:01", "id": 7, "topico": "co", "valor": "90"},
+  {"data": "2025-04-25 12:06:02", "id": 7, "topico": "qual_ar", "valor": "20"},
+  {"data": "2025-04-25 12:06:03", "id": 7, "topico": "temp", "valor": "40"},
+
+  {"data": "2025-04-25 12:07:01", "id": 8, "topico": "co", "valor": "45"},
+  {"data": "2025-04-25 12:07:02", "id": 8, "topico": "qual_ar", "valor": "68"},
+  {"data": "2025-04-25 12:07:03", "id": 8, "topico": "temp", "valor": "30"},
+
+  {"data": "2025-04-25 12:08:01", "id": 9, "topico": "co", "valor": "48"},
+  {"data": "2025-04-25 12:08:02", "id": 9, "topico": "qual_ar", "valor": "72"},
+  {"data": "2025-04-25 12:08:03", "id": 9, "topico": "temp", "valor": "32"},
+
+  {"data": "2025-04-25 12:09:01", "id": 10, "topico": "co", "valor": "22"},
+  {"data": "2025-04-25 12:09:02", "id": 10, "topico": "qual_ar", "valor": "40"},
+  {"data": "2025-04-25 12:09:03", "id": 10, "topico": "temp", "valor": "24"}
+]
